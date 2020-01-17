@@ -1,0 +1,34 @@
+application:
+  key: volcano
+
+spring:
+  rabbitmq:
+    username: guest
+    scrambled: amU7yEqKxAkI7/n+pAwJOQ==
+    host: localhost
+    port: 5672
+    listener:
+      type: simple
+      simple:
+        concurrency: 1
+        max-concurrency: 1
+        acknowledge-mode: auto
+
+queue:
+  reply: amq.rabbitmq.reply-to
+  request: q.acme.command
+  autodelete: false
+  durable: false
+
+exchange:
+  name: x.acme
+  type: direct
+  durable: false
+
+routingKey:
+  name: rpc
+
+logging:
+  file: logs/application.log
+  level:
+    root: INFO
